@@ -1,2 +1,2 @@
-# sample_sensor_kit_launch
+# mkz_sensor_kit_launch
 # test

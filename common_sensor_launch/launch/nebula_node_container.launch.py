@@ -85,7 +85,6 @@ def launch_setup(context, *args, **kwargs):
     ), "Sensor calib file under calibration/ was not found: {}".format(sensor_calib_fp)
 
     nodes = []
-
     nodes.append(
         ComposableNode(
             package="glog_component",
@@ -115,6 +114,7 @@ def launch_setup(context, *args, **kwargs):
                         "cloud_min_angle",
                         "cloud_max_angle",
                         "dual_return_distance_threshold",
+                        "launch_hw"
                     ),
                 },
             ],
@@ -166,6 +166,7 @@ def launch_setup(context, *args, **kwargs):
             name="crop_box_filter_mirror",
             remappings=[
                 ("input", "self_cropped/pointcloud_ex"),
+                # ("input", "pointcloud_raw_ex"),
                 ("output", "mirror_cropped/pointcloud_ex"),
             ],
             parameters=[cropbox_parameters],
@@ -182,6 +183,7 @@ def launch_setup(context, *args, **kwargs):
                 ("~/input/twist", "/sensing/vehicle_velocity_converter/twist_with_covariance"),
                 ("~/input/imu", "/sensing/imu/imu_data"),
                 ("~/input/pointcloud", "mirror_cropped/pointcloud_ex"),
+                # ("~/input/pointcloud", "pointcloud_raw_ex"),
                 ("~/output/pointcloud", "rectified/pointcloud_ex"),
             ],
             extra_arguments=[{"use_intra_process_comms": LaunchConfiguration("use_intra_process")}],

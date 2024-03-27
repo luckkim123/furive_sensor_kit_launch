@@ -5,7 +5,7 @@
   <arg name="vehicle_id" default="$(env VEHICLE_ID default)"/>
   <arg name="vehicle_mirror_param_file"/>
   <arg name="pointcloud_container_name" default="pointcloud_container"/>
-  <arg name="heasi_launch_hw" default="false"/>
+  <arg name="hesai_launch_hw" default="false"/>
 
   <group>
     <push-ros-namespace namespace="lidar"/>
